@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+  xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:context="http://www.springframework.org/schema/context"
+  xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd http://www.springframework.org/schema/context https://www.springframework.org/schema/context/spring-context.xsd">
+
+ <!-- <bean id="MybeforeTarget" class="springstudy.demo.test6.codeXml.MyBeforeTarget"/>
+  <bean id="MyBeforeXml" class="springstudy.demo.test6.codeXml.MyBeforeXml"/>
+  <bean id="springProxy" class="org.springframework.aop.framework.ProxyFactoryBean" >
+    <property name="target" ref="MybeforeTarget"></property>
+    <property name="interceptorNames" value="MyBeforeXml"></property>
+  </bean>-->
+ <context:component-scan base-package="springstudy"></context:component-scan>
+</beans>

@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+  xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+  xmlns:aop="http://www.springframework.org/schema/aop"
+  xmlns:context="http://www.springframework.org/schema/context"
+  xmlns:task="http://www.springframework.org/schema/task"
+  xsi:schemaLocation="
+  http://www.springframework.org/schema/beans
+  http://www.springframework.org/schema/beans/spring-beans-3.1.xsd
+  http://www.springframework.org/schema/tx
+  http://www.springframework.org/schema/tx/spring-tx-3.1.xsd
+  http://www.springframework.org/schema/aop
+  http://www.springframework.org/schema/aop/spring-aop-3.1.xsd
+  http://www.springframework.org/schema/context
+  http://www.springframework.org/schema/context/spring-context-3.1.xsd
+  http://www.springframework.org/schema/mvc
+  http://www.springframework.org/schema/mvc/spring-mvc-3.1.xsd
+  http://www.springframework.org/schema/task
+  http://www.springframework.org/schema/task/spring-task-3.1.xsd">
+  <!--静态工厂-->
+  <bean id="myPersonStatic" class="springstudy.demo.test1.PersonFactoryStatic" factory-method="getInstance"></bean>
+  <!--实例工厂-->
+  <bean id="myPersonInstance" class="springstudy.demo.test1.Person" factory-bean="personFactory"
+    factory-method="getInstance"></bean>
+  <bean id="personFactory" class="springstudy.demo.test1.PersonFactoryInstance"/>
+  <context:component-scan base-package="springstudy"></context:component-scan>
+  <!--自定义后置处理器-->
+  <!--<bean id="myPostProfessor" class="springstudy.demo.test2.MyBeanPostProfessor"></bean>-->
+  <!--<bean id="catService" class="springstudy.demo.test4.service.serviceImpl.ICatHelloService" scope="singleton" />-->
+  <!--//spring是不允许接口注入bean的-->
+  <!--<bean id="animalSay" autowire="byType" class="springstudy.demo.test4.service.HelloService" abstract="true"></bean>-->
+  <!--问题：注解实现的注入 HelloService x  @Autowired实现类后 xml如何配置？？？-->
+  <!--踩坑：helloService1报红 运行 Bean property 'helloService1' is not writable or has an invalid setter method-->
+  <!--原因分析：property注入需要利用setter注入，而我的testmain中没有setter所以报错-->
+  <bean id="testMain" class="springstudy.demo.test4.TestMain" autowire="byType">
+    <!--<property name="helloService1" ref="helloService1"></property>-->
+  </bean>
+  <bean id="helloService1" class="springstudy.demo.test4.service.serviceImpl.IDogHelloService"></bean>
+</beans>
