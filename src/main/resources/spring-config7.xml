@@ -1,6 +1,46 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <beans xmlns="http://www.springframework.org/schema/beans"
-  xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-  xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd">
+  xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:context="http://www.springframework.org/schema/context"
+  xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd http://www.springframework.org/schema/context https://www.springframework.org/schema/context/spring-context.xsd">
+  <context:component-scan base-package="springstudy"></context:component-scan>
+  <bean class="springstudy.demo.test7.service.serviceImpl.Person" id="person"/>
+  <bean class="springstudy.demo.test7.service.serviceImpl.Dog" id="dog"/>
 
+  <!--target是谁 放个接口能拦截所有实现类吗-->
+  <!--<bean class="org.springframework.aop.framework.ProxyFactoryBean" id="personProxy">
+    <property name="targetName" value="person"></property>
+    <property name="interceptorNames" value="myAdvice"></property>
+  </bean>
+  <bean class="org.springframework.aop.framework.ProxyFactoryBean" id="dogProxy">
+    <property name="targetName" value="dog"></property>
+    <property name="interceptorNames" value="myAdvice"/>
+  </bean>
+  <bean class="springstudy.demo.test7.advice.MyAdvice" id="myAdvice"></bean>
+  -->
+  <!--以上将person和dog的所有方法 before进行增强了-->
+  <bean class="org.springframework.aop.framework.ProxyFactoryBean" id="personProxy">
+    <property name="target" ref="person"></property>
+    <property name="interceptorNames" value="cutAdvisor"></property>
+  </bean>
+  <bean class="org.springframework.aop.framework.ProxyFactoryBean" id="dogProxy">
+    <property name="target" ref="dog"></property>
+    <property name="interceptorNames" value="cutAdvisor"/>
+  </bean>
+  <bean class="springstudy.demo.test7.advice.MyAdvice" id="myAdvice"></bean>
+ <!-- <bean class="springstudy.demo.test7.advice.MyPointCutAdvisor">
+    <property name="advice" ref="myAdvice"/>
+
+  </bean>-->
+  <!--改动 将现在的myAdvice包一层，放进advisor中 配置 getAdvice和getPointCut-->
+  <bean class="springstudy.demo.test7.advice.MyPointCutAdvisor" id="cutAdvisor">
+    <property name="advice" ref="myAdvice"></property>
+    <property name="pointcut" ref="myPointCut"/>
+  </bean>
+  <bean class="springstudy.demo.test7.pointCut.MyPointCut" id="myPointCut">
+    <property name="classFilter"  ref="classFilter"></property>
+    <property name="methodMatcher" ref="myMethodMatcher"/>
+  </bean>
+  <bean id="classFilter" class="springstudy.demo.test7.pointCut.MyClassFilter1"/>
+  <bean id="myMethodMatcher" class="springstudy.demo.test7.pointCut.MyPointCut$MyMethodMatcher"/>
+  <!--出现问题 point cut can not be null-->
 </beans>

@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Diagram>
+  <ID>JAVA</ID>
+  <OriginalElement>org.springframework.aop.Advisor</OriginalElement>
+  <nodes>
+    <node x="0.0" y="0.0">org.springframework.aop.framework.ProxyFactoryBean</node>
+    <node x="247.0" y="361.0">org.springframework.aop.Pointcut</node>
+    <node x="3.0" y="485.0">org.springframework.aop.PointcutAdvisor</node>
+    <node x="0.0" y="361.0">org.springframework.aop.Advisor</node>
+  </nodes>
+  <notes />
+  <edges>
+    <edge source="org.springframework.aop.PointcutAdvisor" target="org.springframework.aop.Advisor">
+      <point x="0.0" y="-26.0" />
+      <point x="0.0" y="37.0" />
+    </edge>
+  </edges>
+  <settings layout="Hierarchic Group" zoom="1.2043087971274689" x="242.71824630722068" y="219.99538765473682" />
+  <SelectedNodes>
+    <node>org.springframework.aop.framework.ProxyFactoryBean</node>
+  </SelectedNodes>
+  <Categories>
+    <Category>Methods</Category>
+  </Categories>
+  <SCOPE>All</SCOPE>
+  <VISIBILITY>public</VISIBILITY>
+</Diagram>
+
