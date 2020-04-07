@@ -51,7 +51,6 @@
   test2：BeanPostProfessor
   test3: 手写springioc
 =======
->>>>>>> e9cb43f10df3485d975f7d5f098325c339658843
          对三种获取class的方法进行了测试
   ##### test4：
          前期准备：踩了些坑
@@ -64,11 +63,7 @@
          总结了切面、切入点、通知等概念 
          见MyAspect MyConfiguation Test6Say testMain 
          尝试jdk代理模式和cglib代理模式 见test6的proxy文件夹
-<<<<<<< HEAD
-         methodBeforeAdvice          
->>>>>>> 7fda5fe... 第一次提交交
-=======
-         methodBeforeAdvice 
+      
   ##### test7：springAop 课件uml图
          Animal  eat(aop增强洗手) say(不需要增强)
            |_Person
@@ -89,4 +84,3 @@
          classPathXmlApplication.new的时候初始化ioc容器 放入bean
          初始化pointcut advice 注入advisor
          初始化代理对象proxy 将原对象注入target advisor注入interceptor
->>>>>>> e9cb43f10df3485d975f7d5f098325c339658843
