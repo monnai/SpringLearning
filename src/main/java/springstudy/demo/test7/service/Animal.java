@@ -5,6 +5,9 @@ package springstudy.demo.test7.service;
  * @Auther gu.sc
  * @Date 2020/4/6 16:27
  */
-public class Animal {
+public interface Animal {
 
+  void say();
+
+  void eat();
 }
