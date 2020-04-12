@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+  xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+  xmlns:aop="http://www.springframework.org/schema/aop"
+  xsi:schemaLocation="http://www.springframework.org/schema/beans
+  http://www.springframework.org/schema/beans/spring-beans.xsd
+  http://www.springframework.org/schema/aop   http://www.springframework.org/schema/aop/spring-aop.xsd
+">
+  <!--ioc管理-->
+  <bean id="writeService" class="springstudy.demo.test8.unxml.WriteService"></bean>
+  <bean id="writeServiceAspect" class="springstudy.demo.test8.unxml.WriteServiceAspect"></bean>
+
+  <aop:config>
+    <aop:aspect ref="writeServiceAspect">
+      <aop:around method="log"
+        pointcut="execution(public void springstudy.demo.test8.unxml.WriteService.write(..))"></aop:around>
+    </aop:aspect>
+  </aop:config>
+
+</beans>

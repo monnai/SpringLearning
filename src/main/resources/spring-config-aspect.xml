@@ -10,4 +10,19 @@
     <property name="interceptorNames" value="MyBeforeXml"></property>
   </bean>-->
  <context:component-scan base-package="springstudy"></context:component-scan>
+ <bean id="hair" class="springstudy.demo.test8.Hair">
+  <property name="map" >
+   <map>
+    <entry value="xx1" key="xx1"/>
+    <entry value="xx2" key="xx2"/>
+    <entry value="xx3" key="xx3"/>
+   </map>
+  </property>
+  <property name="properties">
+   <props>
+    <prop key="123">123</prop>
+    <prop key="1235">1236</prop>
+   </props>
+  </property>
+ </bean>
 </beans>
